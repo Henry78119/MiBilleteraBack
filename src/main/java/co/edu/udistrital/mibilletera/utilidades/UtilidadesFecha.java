@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class UtilidadesFecha {
 
-    private final static String FORMATO_FECHA = "YYYY-MM-dd";
+    private final static String FORMATO_FECHA = "yyyy-MM-dd";
 
     public static String obtenerStringPorDate(Date fecha) {
         try {

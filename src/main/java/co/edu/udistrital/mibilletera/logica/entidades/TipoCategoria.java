@@ -7,6 +7,7 @@ package co.edu.udistrital.mibilletera.logica.entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -83,6 +84,7 @@ public class TipoCategoria implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public List<CategoriaMovimiento> getCategoriaMovimientoList() {
         return categoriaMovimientoList;
     }

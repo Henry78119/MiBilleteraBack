@@ -8,6 +8,7 @@ package co.edu.udistrital.mibilletera.logica.entidades;
 import co.edu.udistrital.mibilletera.utilidades.UtilidadesFecha;
 import java.io.Serializable;
 import java.util.Date;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  *
@@ -106,6 +106,7 @@ public class Movimiento implements Serializable {
         this.fecha = fecha;
     }
 
+    @JsonbTransient
     public CategoriaMovimiento getIdCategoriaMovimiento() {
         return idCategoriaMovimiento;
     }
@@ -114,6 +115,7 @@ public class Movimiento implements Serializable {
         this.idCategoriaMovimiento = idCategoriaMovimiento;
     }
 
+    @JsonbTransient
     public Cuenta getCuenta() {
         return cuenta;
     }

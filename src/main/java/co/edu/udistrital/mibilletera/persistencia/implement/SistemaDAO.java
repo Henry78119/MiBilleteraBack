@@ -12,6 +12,8 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.CacheUsage;
 import org.eclipse.persistence.config.QueryHints;
 import co.edu.udistrital.mibilletera.persistencia.SistemaDaoI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +22,8 @@ import co.edu.udistrital.mibilletera.persistencia.SistemaDaoI;
 public class SistemaDAO implements SistemaDaoI {
 
     private Persistencia persistencia;
+    
+    private Logger logger;
 
     public Persistencia getPersistencia() {
         if (persistencia == null) {
@@ -52,7 +56,7 @@ public class SistemaDAO implements SistemaDaoI {
 
             return resultado;
         } catch (Exception e) {
-            System.out.println("ERROR AL EJECUTAR CONSULTA: " + consultaNativa + " --- " + e.getMessage());
+            logger.log(Level.SEVERE, "ERROR AL EJECUTAR CONSULTA: " + consultaNativa, e );            
         }
         return new ArrayList<>();
     }
@@ -67,8 +71,8 @@ public class SistemaDAO implements SistemaDaoI {
             getPersistencia().getEntityManager().flush();
             tx.commit();
             return entidad;
-        } catch (Exception e) {
-            System.out.println("ERROR AL EDITAR : " + e.getMessage());
+        } catch (Exception e) {            
+            logger.log(Level.SEVERE, "ERROR AL EDITAR: " + entidad, e );
         }
         return null;
     }
@@ -82,8 +86,8 @@ public class SistemaDAO implements SistemaDaoI {
             getPersistencia().getEntityManager().flush();
             tx.commit();
             return entidad;
-        } catch (Exception e) {
-            System.out.println("ERROR AL CREAR : " + e.getMessage());
+        } catch (Exception e) {            
+            logger.log(Level.SEVERE, "ERROR AL CREAR: " + entidad, e );
         }
         return null;
     }
@@ -95,8 +99,8 @@ public class SistemaDAO implements SistemaDaoI {
             tx.begin();
             getPersistencia().getEntityManager().remove(getPersistencia().getEntityManager().merge(entidad));
             tx.commit();
-        } catch (Exception e) {
-            System.out.println("ERROR AL BORRAR : " + e.getMessage());
+        } catch (Exception e) {            
+            logger.log(Level.SEVERE, "ERROR AL BORRAR: " + entidad, e );
         }
     }
 

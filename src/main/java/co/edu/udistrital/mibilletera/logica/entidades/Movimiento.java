@@ -12,6 +12,7 @@ import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -52,7 +54,8 @@ public class Movimiento implements Serializable {
     private String fecha;
 
     @JoinColumn(name = "idCategoriaMovimiento", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    
     private CategoriaMovimiento idCategoriaMovimiento;
 
     @JoinColumn(name = "idCuenta", referencedColumnName = "id")
@@ -106,7 +109,6 @@ public class Movimiento implements Serializable {
         this.fecha = fecha;
     }
 
-    @JsonbTransient
     public CategoriaMovimiento getIdCategoriaMovimiento() {
         return idCategoriaMovimiento;
     }
@@ -114,8 +116,7 @@ public class Movimiento implements Serializable {
     public void setIdCategoriaMovimiento(CategoriaMovimiento idCategoriaMovimiento) {
         this.idCategoriaMovimiento = idCategoriaMovimiento;
     }
-
-    @JsonbTransient
+    
     public Cuenta getCuenta() {
         return cuenta;
     }

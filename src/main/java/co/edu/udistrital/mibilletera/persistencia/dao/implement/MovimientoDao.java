@@ -30,6 +30,7 @@ public class MovimientoDao implements MovimientoDaoI {
 
     @Override
     public void crearMovimiento(Movimiento movimiento) {
+        movimiento.setFechaDate( new Date() );
         getSistemaDAO().crear(movimiento);
     }
 

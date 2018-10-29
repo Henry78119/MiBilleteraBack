@@ -8,7 +8,6 @@ package co.edu.udistrital.mibilletera.logica.servicios;
 import co.edu.udistrital.mibilletera.logica.LogicaPrincipal;
 import co.edu.udistrital.mibilletera.logica.LogicaPrincipalI;
 import co.edu.udistrital.mibilletera.logica.entidades.TipoCategoria;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -34,15 +33,6 @@ public class TipoCategoriaService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<TipoCategoria> getTiposCategoria() {
-//        List<TipoCategoria> retValue = new ArrayList<>();
-//        TipoCategoria tipoCategoria;
-//        for(int i = 0; i < 10; i++){
-//            tipoCategoria = new TipoCategoria();
-//            tipoCategoria.setId(i);
-//            tipoCategoria.setNombre("xxx "+i+" xxx");            
-//            retValue.add(tipoCategoria);
-//        }
-//        return retValue;
         return getLogicaPrincipal().obtenerTipoCategoriaList();
     }
 

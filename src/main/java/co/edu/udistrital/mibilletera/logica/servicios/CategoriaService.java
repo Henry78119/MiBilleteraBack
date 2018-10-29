@@ -9,7 +9,6 @@ import co.edu.udistrital.mibilletera.logica.LogicaPrincipal;
 import co.edu.udistrital.mibilletera.logica.LogicaPrincipalI;
 import co.edu.udistrital.mibilletera.logica.entidades.CategoriaMovimiento;
 import co.edu.udistrital.mibilletera.logica.entidades.TipoCategoria;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -40,17 +39,6 @@ public class CategoriaService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<CategoriaMovimiento> getCategoriasMovimiento(@PathParam("id") Integer idTipoCategoria) {
-//        List<CategoriaMovimiento> retValue = new ArrayList<>();
-//        CategoriaMovimiento categoriaMovimiento;
-//        TipoCategoria tipoCategoria = new TipoCategoria(idTipoCategoria);
-//        for(int i = 0; i < 10; i++){
-//            categoriaMovimiento = new CategoriaMovimiento();
-//            categoriaMovimiento.setId(i+1);
-//            categoriaMovimiento.setNombre("yyy "+i+" yyy");
-//            categoriaMovimiento.setIdTipoCategoria(tipoCategoria);
-//            retValue.add(categoriaMovimiento);
-//        }
-//        return retValue;
         return getLogicaPrincipal().obtenerCategoriaMovimientoList(new TipoCategoria(idTipoCategoria));
     }
     

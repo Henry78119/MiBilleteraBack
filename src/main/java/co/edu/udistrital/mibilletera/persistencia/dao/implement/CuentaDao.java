@@ -10,6 +10,7 @@ import java.util.List;
 import co.edu.udistrital.mibilletera.logica.entidades.Cuenta;
 import co.edu.udistrital.mibilletera.persistencia.dao.CuentaDaoI;
 import co.edu.udistrital.mibilletera.persistencia.SistemaDaoI;
+import java.util.Date;
 
 /**
  *
@@ -27,7 +28,9 @@ public class CuentaDao implements CuentaDaoI {
     }
 
     @Override
-    public void crearCuenta(Cuenta cuenta) {
+    public void crearCuenta(Cuenta cuenta) {        
+        cuenta.setFechaAperturaDate(new Date());
+        cuenta.setSaldo(0.0d);
         getSistemaDAO().crear(cuenta);
     }
 
@@ -38,8 +41,7 @@ public class CuentaDao implements CuentaDaoI {
 
     @Override
     public List<Cuenta> obtenerListaCuenta() {
-        return getSistemaDAO().buscarPorConsultaNativa(
-                "SELECT * FROM CUENTA", Cuenta.class);
+        return getSistemaDAO().buscarPorConsultaNativa("SELECT * FROM CUENTA", Cuenta.class);
     }
 
     @Override
